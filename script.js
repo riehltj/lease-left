@@ -18,10 +18,9 @@ document.getElementById('leaseForm').addEventListener('submit', function (e) {
     const daysRemaining = Math.max(0, Math.floor(totalLeaseDays - daysElapsed));
     const milesRemaining = Math.max(0, totalAllowedMileage - expectedMileage);
 
-    // Track calculation event via Google Tag Manager
-    if (typeof dataLayer !== 'undefined') {
-        dataLayer.push({
-            'event': 'calculate',
+    // Track calculation event in Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'calculate', {
             'event_category': 'Lease Calculator',
             'event_label': 'Mileage Calculation',
             'value': expectedMileage
